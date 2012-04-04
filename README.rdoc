@@ -21,10 +21,12 @@ This is purely for here to define the project
 add this to config/initializers/fail_whale.rb
 
 
-  fail_on /api.twitter.com\/1\/statuses\/show.json?id=112652479837110273/ do
-    with :status => :500, :return => {"errors":[{"message":"Sorry, something when wrong","code":34}]}
-    with :status => :404, :return => {"errors":[{"message":"Sorry, that message cannot be found","code":34}]}
-    with :timeout => 60
+  FailWhale::Config do
+    fail_on /api.twitter.com\/1\/statuses\/show.json?id=112652479837110273/ do
+      with :status => :500, :return => {"errors":[{"message":"Sorry, something when wrong","code":34}]}
+      with :status => :404, :return => {"errors":[{"message":"Sorry, that message cannot be found","code":34}]}
+      with :timeout => 60
+    end
   end
 
 
