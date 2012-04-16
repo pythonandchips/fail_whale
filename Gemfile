@@ -7,8 +7,10 @@ source "http://rubygems.org"
 # Include everything needed to run rake, tests, features, etc.
 
 gem 'json', '~> 1.6.6'
+gem 'in_every'
 
 group :development do
+  gem "awesome_print"
   gem "rspec", "~> 2.8.0"
   gem "rspec-given"
   gem "rdoc", "~> 3.12"
