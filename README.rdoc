@@ -1,6 +1,34 @@
-= fail_whale
+= Fail Whale
 
-Description goes here.
+When developing rails applications that depend on external services we often don't have a way of simulating these service failing on development or staging boxes. Fail whale is designed randomly return failing web services while developing an application.
+
+The gem is inspired by Netflix chaos monkey http://techblog.netflix.com/2011/07/netflix-simian-army.html
+
+== Current Status
+
+No more than a shell gem project. 
+
+This is purely for here to define the project
+
+
+== Installing
+
+  gem :git => "git://github.com/pythonandchips/fail_whale.git", :ref => "HEAD"
+
+
+== Usage
+
+add this to config/initializers/fail_whale.rb
+
+
+  FailWhale::Config do
+    fail_on /api.twitter.com\/1\/statuses\/show.json?id=112652479837110273/ do
+      with :status => :500, :return => {"errors":[{"message":"Sorry, something when wrong","code":34}]}
+      with :status => :404, :return => {"errors":[{"message":"Sorry, that message cannot be found","code":34}]}
+      with :timeout => 60
+    end
+  end
+
 
 == Contributing to fail_whale
  
